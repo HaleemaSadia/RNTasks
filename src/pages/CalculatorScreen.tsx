@@ -1,11 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native"
 
-interface CalculatorScreenProps {
-
-}
-
-const CalculatorScreen: React.FC<CalculatorScreenProps> = () => {
+const CalculatorScreen: React.FC = () => {
     const [input1, setInput1] = useState<string>("")
     const [input2, setInput2] = useState<string>("")
     const [sum, setSum] = useState<string>("")

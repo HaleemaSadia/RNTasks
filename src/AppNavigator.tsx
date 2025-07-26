@@ -7,7 +7,6 @@ export type RootStackParamList = {
   CalculatorScreen: undefined;
   NavBarScreen: undefined;
   TwoSumScreen: undefined;
-  // add more screens here
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
