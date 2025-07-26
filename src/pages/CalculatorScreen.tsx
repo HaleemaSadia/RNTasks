@@ -5,10 +5,17 @@ const CalculatorScreen: React.FC = () => {
     const [input1, setInput1] = useState<string>("")
     const [input2, setInput2] = useState<string>("")
     const [sum, setSum] = useState<string>("")
+    const [isError, setIsError] = useState<boolean>(false)
 
     const calculate = useCallback(() => {
-        let sum = (parseInt(input1) + parseInt(input2))
-        setSum(String(sum))
+        if (input1 !== '' && input2 !== '') {
+            let sum = (parseInt(input1) + parseInt(input2))
+            setSum(String(sum))
+            setIsError(false)
+        } else {
+            setSum("")
+            setIsError(true)
+        }
     }, [input1, input2])
 
     return (
@@ -29,6 +36,9 @@ const CalculatorScreen: React.FC = () => {
                 keyboardType="numeric"
             />
             <Button title="Add Two Numbers" onPress={calculate} />
+            {isError ?
+                <Text style={styles.error}>Please enter first and second number to calculate.</Text> : null
+            }
             <Text style={styles.result}>Total: {sum}</Text>
         </View>
     )
@@ -55,6 +65,11 @@ const styles = StyleSheet.create({
         marginTop: 16,
         fontSize: 16,
     },
+    error: {
+        marginTop: 16,
+        fontSize: 14,
+        color: "red"
+    }
 })
 
 export default CalculatorScreen;
